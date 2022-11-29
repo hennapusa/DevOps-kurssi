@@ -5,11 +5,12 @@ import { HomeComponent } from './home.component';
 
 //ng test --include=src/app/home/home.component.spec.ts
 
+
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  
   let routerSpy = { navigate: jasmine.createSpy('navigate') };
+   
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

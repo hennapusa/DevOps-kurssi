@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedbackComponent } from './feedback.component';
 
+
+
 describe('FeedbackComponent', () => {
   let component: FeedbackComponent;
   let fixture: ComponentFixture<FeedbackComponent>;
@@ -20,4 +22,5 @@ describe('FeedbackComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('cancel navigates to home pages', )
 });
