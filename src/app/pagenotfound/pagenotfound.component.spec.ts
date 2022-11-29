@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PagenotfoundComponent } from './pagenotfound.component';
 
+//ng test --include=src/app/pagenotfound/pagenotfound.component.spec.ts
+
 describe('PagenotfoundComponent', () => {
   let component: PagenotfoundComponent;
   let fixture: ComponentFixture<PagenotfoundComponent>;
