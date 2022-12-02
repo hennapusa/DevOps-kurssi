@@ -36,8 +36,4 @@ describe('HomeComponent', () => {
     expect (routerSpy.navigate).toHaveBeenCalledWith(['feedback'])
   });
 
-  /*it('button navigates to feedback page', () => {
-    component.showFeedbackPage();
-    expect (routerSpy.navigate).toHaveBeenCalledWith(['homeback'])
-  });*/
 });

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { FeedbackComponent } from './feedback.component';
 
@@ -8,10 +9,14 @@ import { FeedbackComponent } from './feedback.component';
 describe('FeedbackComponent', () => {
   let component: FeedbackComponent;
   let fixture: ComponentFixture<FeedbackComponent>;
+  let routerSpy = { navigate: jasmine.createSpy('navigate') };
+  //let router = { navigate: jasmine.createSpy('navigate') };
+ 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedbackComponent ]
+      declarations: [ FeedbackComponent ],
+      providers: [{provide: Router, useValue: routerSpy}]
     })
     .compileComponents();
 
@@ -30,11 +35,48 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeFalsy();
   });
 
-  
 
- /* it('cancel navigates to home pages', () => {
-    const routerSpy = spyOn(router, 'navigate');
+  it('should mark name as invalid when it has only character', () => {
+    const ctrl = component.fbForm.get('number');
+    ctrl?.setValue('0');
+    fixture.detectChanges();
+    expect(ctrl?.valid).toBeFalsy();
+  });
+
+  it('cancel navigates to home pages', () => {
+    //const routerSpy = spyOn(router, 'navigate');
     component.cancel();
-    expect(routerSpy).toHaveBeenCalledWith(['home']);
-  });*/
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
+  });
+
+  it('should phone number as invalid when it has only numbers', () => {
+    const ctrl = component.fbForm.get('number');
+    ctrl?.setValue('0');
+    fixture.detectChanges();
+    expect(ctrl?.valid).toBeFalsy();
+  });
+  it('should phone number as invalid when it has to be 11 numbers', () => {
+    const ctrl = component.fbForm.get('phone');
+    ctrl?.setValue('11');
+    fixture.detectChanges();
+    expect(ctrl?.valid).toBeFalsy();
+  });
+
+  it('should email as invalid when it has only character @', () => {
+    const ctrl = component.fbForm.get('email');
+    ctrl?.setValue('@');
+    fixture.detectChanges();
+    expect(ctrl?.valid).toBeFalsy();
+  });
+   
+  it('should set the default value of subcription to true', () => {
+    const ctrl = component.fbForm.get('subscription');
+    expect(ctrl?.value).toBeFalsy();
+  });
+
+  it('should set the default value of phone', () => {
+    const ctrl = component.fbForm.get('phone');
+    expect(ctrl?.value).toBeFalsy();
+     
+  });
 });
