@@ -36,26 +36,18 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeFalsy();
   });
 
-//Ei anna virhettä, mutta ei ole varmaan oikein
-  it('should mark name as invalid when it has only character', () => {
-    const ctrl = component.fbForm.get('number');
-    ctrl?.setValue('0, A');
-    fixture.detectChanges();
-    expect(ctrl?.valid).toBeFalsy();
-  });
-
   it('cancel navigates to home pages', () => {
-    //const routerSpy = spyOn(router, 'navigate');
     component.cancel();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
   });
-
+//Ei anna virhettä, mutta ei toimi oikein varmaankaan
   it('should phone number as invalid when it has only numbers', () => {
     const ctrl = component.fbForm.get('number');
     ctrl?.setValue('0');
     fixture.detectChanges();
     expect(ctrl?.valid).toBeFalsy();
   });
+
   it('should phone number as invalid when it has to be 10 numbers', () => {
     const ctrl = component.fbForm.get('phone');
     ctrl?.setValue('67809543213');
@@ -84,7 +76,7 @@ describe('FeedbackComponent', () => {
   });
 
  //TÄMÄ EI TOIMI
-   /*it('it should display username on the label for the username feild', () => {
+  /* it('it should display username on the label for the username feild', () => {
     //const ctrl = fixture.debugElement.query(By.css('fbForm'));
     const ctrl = fixture.debugElement.query(By.css('.--username label.ctrl-label'));
     expect(ctrl).toBeTruthy();
