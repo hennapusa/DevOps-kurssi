@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
 import { FeedbackComponent } from './feedback.component';
+import { Component } from '@angular/core';
 
 //ng test --include=src/app/feedback/feedback.component.spec.ts
 
@@ -29,7 +30,7 @@ describe('FeedbackComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('shoukd mark name as invalid when it has only one character', () => {
+  it('should mark name as invalid when it has only one character', () => {
     const ctrl = component.fbForm.get('name');
     ctrl?.setValue('A');
     fixture.detectChanges();
@@ -40,6 +41,7 @@ describe('FeedbackComponent', () => {
     component.cancel();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
   });
+
 //Ei anna virhettä, mutta ei toimi oikein varmaankaan
   it('should phone number as invalid when it has only numbers', () => {
     const ctrl = component.fbForm.get('number');
@@ -55,19 +57,24 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeTruthy();
   });
  
-
+// ei varmaankaan toimi
   it('should email as invalid when it does not have @', () => {
     const ctrl = component.fbForm.get('email');
     ctrl?.setValue('@');
     fixture.detectChanges();
     expect(ctrl?.valid).toBeFalsy();
   });
+  
+  it('email field validity', () => {
+    let email = component.fbForm.controls['email']; 
+    expect(email.valid).toBeFalsy(); 
+  });
    
   it('should set the default value of phone', () => {
     const ctrl = component.fbForm.get('phone');
     expect(ctrl?.value).toBeFalsy();
-     
   });
+
   it('should form title as valid when it has a value', () => {
     const ctrl = component.fbForm.get('title');
     ctrl?.setValue('title');
@@ -75,8 +82,18 @@ describe('FeedbackComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('form invalid when empty', () => {
+    expect(component.fbForm.valid).toBeFalsy();
+  });
+
+  it('should mark as invalid when its value is less than 10 characters', () => {
+    const ctrl = component.fbForm.get('phone');
+    ctrl?.setValue('12345');
+    fixture.detectChanges();
+    expect(ctrl?.invalid).toBeTruthy();
+  });
  //TÄMÄ EI TOIMI
-  /* it('it should display username on the label for the username feild', () => {
+  /*it('it should display username on the label for the username feild', () => {
     //const ctrl = fixture.debugElement.query(By.css('fbForm'));
     const ctrl = fixture.debugElement.query(By.css('.--username label.ctrl-label'));
     expect(ctrl).toBeTruthy();
