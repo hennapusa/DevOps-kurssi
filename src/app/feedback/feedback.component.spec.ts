@@ -42,6 +42,13 @@ describe('FeedbackComponent', () => {
     expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
   });
 
+  it('should display email on the label for the email feild', () => {
+    const ctrl = component.fbForm.get('email');
+    ctrl?.setValue('matti.meikalainen@student.lab.fi');
+    fixture.detectChanges();
+    expect(ctrl?.valid).toBeTruthy();
+  });
+
 //Ei anna virhettä, mutta ei toimi oikein varmaankaan
   it('should phone number as invalid when it has only numbers', () => {
     const ctrl = component.fbForm.get('number');
@@ -57,18 +64,18 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeTruthy();
   });
  
-// ei varmaankaan toimi
-  it('should email as invalid when it does not have @', () => {
-    const ctrl = component.fbForm.get('email');
-    ctrl?.setValue('@');
-    fixture.detectChanges();
-    expect(ctrl?.valid).toBeFalsy();
-  });
-  
-  it('email field validity', () => {
+  //saattaa olla turha
+ it('email field validity', () => {
     let email = component.fbForm.controls['email']; 
     expect(email.valid).toBeFalsy(); 
   });
+
+  it('should display email on the label for the email feild', () => {
+    const email =component.fbForm.get('email');
+    const feedback =fixture.componentInstance;
+    expect (feedback.email).toEqual(email);
+    
+    });
    
   it('should set the default value of phone', () => {
     const ctrl = component.fbForm.get('phone');
@@ -88,22 +95,23 @@ describe('FeedbackComponent', () => {
 
   it('should mark as invalid when its value is less than 10 characters', () => {
     const ctrl = component.fbForm.get('phone');
-    ctrl?.setValue('12345');
+    ctrl?.setValue('34789765');
     fixture.detectChanges();
     expect(ctrl?.invalid).toBeTruthy();
   });
- //TÄMÄ EI TOIMI
-  /*it('it should display username on the label for the username feild', () => {
-    //const ctrl = fixture.debugElement.query(By.css('fbForm'));
-    const ctrl = fixture.debugElement.query(By.css('.--username label.ctrl-label'));
-    expect(ctrl).toBeTruthy();
-    expect(ctrl.nativeElement.getAttribute('for')).toEqual('username');
-  });*/
 
-  /*//TÄMÄ EI TOIMI
-  it('it should display username on the label for the username feild', () => {
-    //const ctrl = fixture.debugElement.query(By.css('fbForm'));
-    const el = fixture.debugElement.query(By.css('.--username label.ctrl-label'));
-    expect(el.nativeElement.innerText).toEqual('username');
-  });*/
+ 
+it('it should display name on the label for the name feild', () => {
+  const name =component.fbForm.get('name');
+  const feedback =fixture.componentInstance;
+  expect (feedback.name).toEqual(name);
+  });
+
+  it('it should display description on the label for the description feild', () => {
+    const description =component.fbForm.get('description');
+    const feedback =fixture.componentInstance;
+    expect (feedback.description).toEqual(description);
+  
+    });
+  
 });
