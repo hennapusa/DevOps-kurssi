@@ -7,11 +7,12 @@ import { FeedbackComponent } from './feedback.component';
 import { Component } from '@angular/core';
 
 //ng test --include=src/app/feedback/feedback.component.spec.ts
+//npm run lint
 
 describe('FeedbackComponent', () => {
   let component: FeedbackComponent;
   let fixture: ComponentFixture<FeedbackComponent>;
-  let routerSpy = { navigate: jasmine.createSpy('navigate') };
+  const routerSpy = { navigate: jasmine.createSpy('navigate') };
   //let router = { navigate: jasmine.createSpy('navigate') };
  
 
@@ -66,7 +67,7 @@ describe('FeedbackComponent', () => {
  
   //saattaa olla turha
  it('email field validity', () => {
-    let email = component.fbForm.controls['email']; 
+    const email = component.fbForm.controls['email']; 
     expect(email.valid).toBeFalsy(); 
   });
 

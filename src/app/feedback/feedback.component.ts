@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class FeedbackComponent implements OnInit {
 
-  headerText: string = "Give feedback";
+  headerText = "Give feedback";
 
   fbForm: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-Z ]*$')]),
@@ -21,8 +21,9 @@ export class FeedbackComponent implements OnInit {
   });
 
   constructor(public router: Router) { }
-
+//tämä on testikokeilu
   ngOnInit(): void {
+    //testi testi
   }
 
   cancel() {
