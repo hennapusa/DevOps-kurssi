@@ -7,8 +7,8 @@ import { PagenotfoundComponent } from './pagenotfound.component';
 describe('PagenotfoundComponent', () => {
   let component: PagenotfoundComponent;
   let fixture: ComponentFixture<PagenotfoundComponent>;
-  const router = { navigate: jasmine.createSpy('navigate') };
-  const routerSpy = { navigate: jasmine.createSpy('navigate') };
+ // const router = { navigate: jasmine.createSpy('navigate') };
+  //const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

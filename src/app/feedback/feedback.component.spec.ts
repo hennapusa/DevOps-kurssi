@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { By } from '@angular/platform-browser';
+//import { Subscription } from 'rxjs';
+//import { By } from '@angular/platform-browser';
 
 import { FeedbackComponent } from './feedback.component';
-import { Component } from '@angular/core';
+//import { Component } from '@angular/core';
 
 //ng test --include=src/app/feedback/feedback.component.spec.ts
 //npm run lint
