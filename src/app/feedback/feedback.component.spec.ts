@@ -50,14 +50,6 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeTruthy();
   });
 
-//Ei anna virhettä, mutta ei toimi oikein varmaankaan
-  it('should phone number as invalid when it has only numbers', () => {
-    const ctrl = component.fbForm.get('number');
-    ctrl?.setValue('0');
-    fixture.detectChanges();
-    expect(ctrl?.valid).toBeFalsy();
-  });
-
   it('should phone number as invalid when it has to be 10 numbers', () => {
     const ctrl = component.fbForm.get('phone');
     ctrl?.setValue('67809543213');
@@ -65,12 +57,6 @@ describe('FeedbackComponent', () => {
     expect(ctrl?.valid).toBeTruthy();
   });
  
-  //saattaa olla turha
- it('email field validity', () => {
-    const email = component.fbForm.controls['email']; 
-    expect(email.valid).toBeFalsy(); 
-  });
-
   it('should display email on the label for the email feild', () => {
     const email =component.fbForm.get('email');
     const feedback =fixture.componentInstance;
