@@ -1,5 +1,5 @@
 FROM nginx:1.23.3
-COPY ./ dist/C:\Users\henna\OneDrive\Työpöytä\DevOps koodi\angular-example-app\dist
+COPY ./ dist/angular-example-app/index.html
 #COPY . /usr/share/nginx/html
 
 
