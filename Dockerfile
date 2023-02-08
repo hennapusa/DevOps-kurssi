@@ -1,6 +1,6 @@
 FROM nginx:1.23.3
-COPY ./dist/angular-example-app /usr/share/nginx/html
-#COPY ./ dist/angular-example-app/index.html
+#COPY ./dist/angular-example-app /usr/share/nginx/html
+COPY ./ dist/angular-example-app/index.html
 #COPY . /usr/share/nginx/html
 
 
