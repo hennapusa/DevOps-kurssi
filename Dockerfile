@@ -3,7 +3,6 @@ COPY ./dist/angular-example-app /usr/share/nginx/html
 #COPY ./ dist/angular-example-app/index.html
 #COPY . /usr/share/nginx/html
 
-RUN yarn install --production
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
