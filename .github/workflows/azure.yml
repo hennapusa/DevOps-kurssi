@@ -44,7 +44,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: webpack artifacts
-          path: .dist/angular-example-app/
+          path: dist/angular-example-app/
       - run: ls ./dist/angular-example-app/
 
       - name: Set up Docker Buildx
